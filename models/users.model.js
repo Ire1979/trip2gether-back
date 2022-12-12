@@ -5,8 +5,8 @@ const getAllUsers = () => {
 const createUser = ({
     name, surname, username, email, password, phone, hobbies, personality, birth_date, rating }) => {
     return db.query(
-        'INSERT INTO users (name, surname, username, email, password, phone, hobbies, personality, birth_date, rating) VALUES (?,?,?,?,?,?,?,?,?,?)',
-        [name, surname, username, email, password, phone, hobbies, personality, birth_date, rating]);
+        'INSERT INTO users (name, surname, username, email, password, phone, hobbies, personality, birth_date) VALUES (?,?,?,?,?,?,?,?,?)',
+        [name, surname, username, email, password, phone, hobbies, personality, birth_date]);
 }
 
 const editByUserId = (userId, { name, surname, username, email, password, phone, hobbies, personality, birth_date, rating }) => {
