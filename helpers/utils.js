@@ -6,7 +6,7 @@ const createToken = (user) => {
         user_id: user.id,
         exp_at: dayjs().add(20, 'days').unix()
     }
-    return jwt.sign(obj, '');
+    return jwt.sign(obj, 'StringCodificationPass');
 }
 
 module.exports = {

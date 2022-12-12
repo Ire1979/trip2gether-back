@@ -63,3 +63,8 @@
 
 - //GET USERS BY TRIP
   - Recupera los usuarios suscritos a un viaje cuya 'id' sea la que pasemos por la ruta.
+
+- POST api/users/register //REGISTRO con encriptación
+- POST /api/users/login //LOGIN con auth
+
+

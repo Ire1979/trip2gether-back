@@ -50,8 +50,36 @@ GET http://localhost:3000/api/users/4
 
 //GET USERS BY TRIP
 GET http://localhost:3000/api/trips/5
+###
 
+//REGISTER (password encriptación)
+POST http://localhost:3000/api/users/register
 
+Content-Type: application/json
+
+{
+"name": "Leire",
+"surname": "Seoane",
+"username": "leiseo",
+"email": "leiseo@gmail.com",
+"password": "12345",
+"phone": "666555000",
+"hobbies": "cocinar, historia, arte medieval",
+"personality": "Sin ser yo gótica, me encanta el gótico",
+"birth_date": "1988-02-23",
+"rating": 5
+}
+###
+
+//LOGIN (token auth)
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+    "email": "leiseo@gmail.com",
+    "password": "12345"
+}
+###
 
 
 
