@@ -81,6 +81,7 @@ Content-Type: application/json
 }
 ###
 
-
+//GET USERS BY TRIP
+GET http://localhost:3000/api/users/trip/5
 
 

@@ -6,23 +6,23 @@
 
 ### /////////PETICIONES BÁSICAS/////////
 
-- GET /api/trips
+- GET 
   - Recupera todos los viajes de la BBDD.
 
-- POST /api/trips
+- POST 
   - Crea un viaje en la BBDD
   - En el body de la petición debe incluirse un objeto con los campos de 'trip'.
 
-- PUT /api/trips/1
+- PUT 
   - Edita el viaje cuya 'id' sea la que pasemos por la ruta.
   - En el body de la petición deben incluirse todos los campos de 'trip'.
 
-- DELETE /api/trips/1
+- DELETE 
   - Elimina el viaje cuya 'id' sea la que pasemos por la ruta.  
 
 ### /////////PETICIONES AVANZADAS/////////
 
-- GET /api/trips/1 //GET TRIP BY ID
+- //GET TRIP BY ID
   - Recupera el viaje cuya 'id' sea la que pasemos por la ruta.
 
 - //GET TRIPS BY DESTINATION
@@ -42,29 +42,31 @@
 
 ### /////////PETICIONES BÁSICAS/////////
 
-- GET /api/users
+- GET 
   - Recupera todos los usuarios de la BBDD.
 
-- POST /api/users
+- POST 
   - Crea un usuario en la BBDD
   - En el body de la petición debe incluirse un objeto con los campos de 'users'.
 
-- PUT /api/users/1
+- PUT 
   - Edita el usuario cuya 'id' sea la que pasemos por la ruta.
   - En el body de la petición deben incluirse todos los campos de 'user'.
 
-- DELETE /api/user/1
+- DELETE 
   - Elimina el usuario cuya 'id' sea la que pasemos por la ruta.  
 
 ### /////////PETICIONES AVANZADAS/////////
 
-- GET /api/user/1 //GET USER BY ID
+- //GET USER BY ID
   - Recupera el usuario cuya 'id' sea la que pasemos por la ruta.
 
 - //GET USERS BY TRIP
   - Recupera los usuarios suscritos a un viaje cuya 'id' sea la que pasemos por la ruta.
 
-- POST api/users/register //REGISTRO con encriptación
-- POST /api/users/login //LOGIN con auth
+- //POST REGISTER 
+  - Registra un nuevo usuario con encriptación.
 
+- //POST LOGIN
+  - Permite el login de un usuario registrado con token válido.
 

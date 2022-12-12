@@ -47,7 +47,11 @@ DELETE http://localhost:3000/api/trips/8
 GET http://localhost:3000/api/trips/4
 ###
 
-//GET TRIPS BY DESTINATION --NO FUNCIONA--
-GET http://localhost:3000/api/trips/destination
+//GET TRIPS BY DESTINATION
+GET http://localhost:3000/api/trips/destination/chicago
+###
+
+//GET TRIPS BY USER
+GET http://localhost:3000/api/trips/user/6
 ###
 

@@ -25,4 +25,8 @@ const getTripsByDestination = (destination) => {
     return db.query('SELECT * FROM trips WHERE destination = ?', [destination]);
 }
 
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination }
+const getTripsByUser = (userId) => {
+    return db.query('SELECT t.* FROM users_has_trips ut JOIN trips t ON t.id = ut.trips_id WHERE ut.users_id = ?', [userId]);
+}
+
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser }

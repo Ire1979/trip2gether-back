@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser } = require('../../models/trips.model');
 
 const router = require('express').Router();
 
@@ -45,17 +45,22 @@ router.get('/:tripId', async (req, res) => {
     const { tripId } = req.params;
     const [trip] = await getTripById(tripId);
     res.json(trip);
-})
+});
 
-//GET TRIPS BY DESTINATION --NO FUNCIONA--
-router.get('/:destination', async (req, res) => {
+//GET TRIPS BY DESTINATION
+router.get('/destination/:location', async (req, res) => {
     try {
-        const [trips] = await getAll();
+        const [trips] = await getTripsByDestination(req.params.location);
+        res.json(trips);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
 
-        for (let destination of destinations) {
-            const [destination] = await getTripsByDestination(trips.destination);
-            trips.destination = destination;
-        }
+//GET TRIPS BY USER
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const [trips] = await getTripsByUser(req.params.userId);
         res.json(trips);
     } catch (error) {
         res.json({ fatal: error.message });

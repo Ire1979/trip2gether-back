@@ -1,4 +1,4 @@
-const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail } = require('../../models/users.model');
+const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip } = require('../../models/users.model');
 const { createToken } = require('../../helpers/utils');
 
 const bcrypt = require('bcryptjs');
@@ -87,6 +87,16 @@ router.post('/login', async (req, res) => {
         success: 'Login correcto',
         token: createToken(user) //Entregamos token creado en utils.js al usuario cuando haga login
     });
+});
+
+//GET USERS BY TRIP
+router.get('/trip/:tripId', async (req, res) => {
+    try {
+        const [users] = await getUsersByTrip(req.params.tripId);
+        res.json(users);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
 });
 
 
