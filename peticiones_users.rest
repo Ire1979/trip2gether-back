@@ -1,0 +1,58 @@
+
+/////////PETICIONES BÁSICAS/////////
+
+GET http://localhost:3000/api/users
+
+###
+POST http://localhost:3000/api/users
+Content-Type: application/json
+
+{
+"name": "Marta",
+"surname": "Vázquez",
+"username": "martav69",
+"email": "martav69@gmail.com",
+"password": "12345",
+"phone": "666999222",
+"hobbies": "cine, novela negra, fotografía",
+"personality": "Conozco al detalle cada película de Wong Kar Wai",
+"birth_date": "1983-05-09",
+"rating": 2
+}
+
+###
+PUT http://localhost:3000/api/users/4
+Content-Type: application/json
+
+{
+"name": "Maite",
+"surname": "Ramirez",
+"username": "miren88",
+"email": "mramirez@gmail.com",
+"password": "12345",
+"phone": "666777888",
+"hobbies": "escalada, gastronomia, manualidades",
+"personality": "Me encanta viajar y conocer gente nueva",
+"birth_date": "1988-05-12",
+"rating": "3"
+}
+
+###
+DELETE http://localhost:3000/api/users/1
+###
+
+
+/////////PETICIONES AVANZADAS/////////
+
+//GET USER BY ID
+GET http://localhost:3000/api/users/4
+###
+
+//GET USERS BY TRIP
+GET http://localhost:3000/api/trips/5
+
+
+
+
+
+

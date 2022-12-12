@@ -1,0 +1,53 @@
+
+/////////PETICIONES BÁSICAS/////////
+
+GET http://localhost:3000/api/trips
+
+###
+POST http://localhost:3000/api/trips
+Content-Type: application/json
+
+{
+"destination": "Chicago",
+"min_traveler": 3,
+"max_traveler": 5,
+"min_age": 25,
+"max_age":53,
+"departure_date": "2022-11-11",
+"duration": 6,
+"price": 544,
+"description": "Visita a la ciudad de Chicago y su arquitectura",
+"status": "finalizado"
+}
+
+###
+PUT http://localhost:3000/api/trips/1
+Content-Type: application/json
+
+{
+"destination": "Chicago",
+"min_traveler": 4,
+"max_traveler": 6,
+"min_age": 25,
+"max_age":53,
+"departure_date": "2022-11-11",
+"duration": 6,
+"price": 544,
+"description": "viaje a chicago"
+}
+
+###
+DELETE http://localhost:3000/api/trips/8
+###
+
+
+/////////PETICIONES AVANZADAS/////////
+
+//GET TRIP BY ID
+GET http://localhost:3000/api/trips/4
+###
+
+//GET TRIPS BY DESTINATION --NO FUNCIONA--
+GET http://localhost:3000/api/trips/destination
+###
+
