@@ -44,7 +44,7 @@ router.delete('/:tripId', async (req, res) => {
 router.get('/:tripId', async (req, res) => {
     const { tripId } = req.params;
     const [trip] = await getTripById(tripId);
-    res.json(trip);
+    res.json(trip[0]);
 });
 
 //GET TRIPS BY DESTINATION
