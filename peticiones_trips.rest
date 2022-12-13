@@ -55,3 +55,21 @@ GET http://localhost:3000/api/trips/destination/chicago
 GET http://localhost:3000/api/trips/user/6
 ###
 
+
+//POST COMMENT
+POST http://localhost:3000/api/trips/comment/new
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZXhwX2F0IjoxNjcyNjU4ODE1LCJpYXQiOjE2NzA5MzA4MTV9.ABHt2tlBORMrdKobGlTGeqUOCfqrGZirEUINdPIDKbI
+
+{
+    "message": "lo que sea",
+    "trip_id": 5,
+    "user_id": 2
+}
+
+###
+
+//GET COMMENTS BY TRIPS
+
+GET http://localhost:3000/api/trips/comment/2
+

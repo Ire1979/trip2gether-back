@@ -54,7 +54,6 @@ GET http://localhost:3000/api/trips/5
 
 //REGISTER (password encriptación)
 POST http://localhost:3000/api/users/register
-
 Content-Type: application/json
 
 {

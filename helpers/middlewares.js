@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dayjs = require('dayjs');
-const { getById } = require('../models/users.model');
+const { getUserById } = require('../models/users.model');
 
 const checkToken = async (req, res, next) => {
 
@@ -25,7 +25,7 @@ const checkToken = async (req, res, next) => {
     }
 
     //Recuperamos los datos del usuario de la bbdd
-    const [user] = await getById(obj.user_id);
+    const [user] = await getUserById(obj.user_id);
     req.user = user[0]
 
     next();
