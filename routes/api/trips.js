@@ -1,4 +1,5 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser } = require('../../models/trips.model');
+const { checkToken } = require('../../helpers/middlewares');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser, createComment, getCommentsByTrips } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -88,6 +89,24 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
+//POST COMMENT
 
+router.post('/comment/new', checkToken, async (req, res) => {
+
+    try {
+        const response = await createComment(req.body.message, req.body.trip_id, req.user.id);
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+
+})
+
+//GET COMMENTS BY TRIPS
+router.get('/comment/:tripId', async (req, res) => {
+    const { tripId } = req.params
+    const response = await getCommentsByTrips(tripId)
+    res.json(response)
+})
 
 module.exports = router;
