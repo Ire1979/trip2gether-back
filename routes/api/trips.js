@@ -4,6 +4,7 @@ const router = require('express').Router();
 const multer = require('multer');
 const upload = multer({ dest: 'public/images' });
 const fs = require('fs');
+const { checkToken } = require('../../helpers/middlewares');
 
 /////////PETICIONES BÁSICAS/////////
 
@@ -12,7 +13,7 @@ router.get('/', async (req, res) => {
     res.json(trip);
 });
 
-router.post('/', upload.single('img_trip'), async (req, res) => {
+router.post('/', checkToken, upload.single('img_trip'), async (req, res) => {
 
     // Antes de guardar el trip en la base de datos, modificamos la imagen para situarla donde nos interesa.
     const extension = '.' + req.file.mimetype.split('/')[1];
@@ -24,6 +25,8 @@ router.post('/', upload.single('img_trip'), async (req, res) => {
     fs.renameSync(req.file.path, newImgPath);
     //Modificamos el BODY para incluir en nombre de la img en la BBDD.
     req.body.img_trip = newImgName;
+
+    req.body.user_id = req.user.id;
 
     console.log(req.file, req.body);
 

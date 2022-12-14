@@ -5,10 +5,10 @@ const getAll = () => {
 }
 
 const create = ({
-    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance }) => {
+    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, user_id }) => {
     return db.query(
-        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance)]);
+        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance), user_id]);
 }
 
 const editById = (tripId, { destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
@@ -20,7 +20,9 @@ const deleteById = (tripId) => {
 }
 
 const getTripById = (tripId) => {
-    return db.query('SELECT * FROM trips WHERE id = ?', [tripId]);
+    return db.query(`SELECT * FROM trips t
+    JOIN users u ON t.user_id = u.id
+    where t.id = ?`, [tripId]);
 }
 
 const getTripsByDestination = (destination) => {
