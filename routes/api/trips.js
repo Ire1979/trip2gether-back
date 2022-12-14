@@ -1,4 +1,3 @@
-const { checkToken } = require('../../helpers/middlewares');
 const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser, createComment, getCommentsByTrips } = require('../../models/trips.model');
 
 const router = require('express').Router();
