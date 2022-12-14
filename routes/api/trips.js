@@ -31,6 +31,7 @@ router.post('/', upload.single('img_trip'), async (req, res) => {
         const [result] = await create(req.body);
         res.json(result)
     } catch (error) {
+        console.log(error);
         res.json({ fatal: error.message });
     }
 });

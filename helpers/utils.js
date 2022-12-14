@@ -9,6 +9,10 @@ const createToken = (user) => {
     return jwt.sign(obj, 'StringCodificationPass');
 }
 
+const strToBool = (str) => {
+    return str === 'true';
+}
+
 module.exports = {
-    createToken
+    createToken, strToBool
 }

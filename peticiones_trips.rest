@@ -17,7 +17,8 @@ Content-Type: application/json
 "duration": 6,
 "price": 544,
 "description": "Visita a la ciudad de Chicago y su arquitectura",
-"status": "finalizado"
+"status": "finalizado",
+"flights": true, "hotel": true, "meals": false, "excursions": true, "rent_car": false, "insurance": false
 }
 
 ###

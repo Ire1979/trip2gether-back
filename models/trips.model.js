@@ -1,12 +1,14 @@
+const { strToBool } = require("../helpers/utils");
+
 const getAll = () => {
     return db.query('SELECT * FROM trips');
 }
 
 const create = ({
-    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip }) => {
+    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance }) => {
     return db.query(
-        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip) VALUES (?,?,?,?,?,?,?,?,?,?)',
-        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip]);
+        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance)]);
 }
 
 const editById = (tripId, { destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
