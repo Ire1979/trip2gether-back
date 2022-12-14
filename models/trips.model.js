@@ -3,10 +3,10 @@ const getAll = () => {
 }
 
 const create = ({
-    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
+    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip }) => {
     return db.query(
-        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description) VALUES (?,?,?,?,?,?,?,?,?)',
-        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description]);
+        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip) VALUES (?,?,?,?,?,?,?,?,?,?)',
+        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip]);
 }
 
 const editById = (tripId, { destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
