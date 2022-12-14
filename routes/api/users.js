@@ -2,7 +2,9 @@ const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getB
 const { createToken } = require('../../helpers/utils');
 
 const bcrypt = require('bcryptjs');
-
+const multer = require('multer');
+const upload = multer({ dest: 'public/images' });
+const fs = require('fs');
 const router = require('express').Router();
 
 /////////PETICIONES BÁSICAS/////////
@@ -12,7 +14,20 @@ router.get('/', async (req, res) => {
     res.json(user);
 });
 
-router.post('/', async (req, res) => {
+router.post('/', upload.single('img_user'), async (req, res) => {
+    // Antes de guardar el user en la base de datos, modificamos la imagen para situarla donde nos interesa.
+    const extension = '.' + req.file.mimetype.split('/')[1];
+    // Obtenemos el nombre de la nueva imagen.
+    const newImgName = req.file.filename + extension;
+    // Obtenemos la ruta donde estará, adjuntándole la extensión.
+    const newImgPath = req.file.path + extension;
+    // Movemos la imagen para que reciba la extensión.
+    fs.renameSync(req.file.path, newImgPath);
+    //Modificamos el BODY para incluir en nombre de la img en la BBDD.
+    req.body.img_user = newImgName;
+
+    console.log(req.file, req.body);
+
     try {
         const [result] = await createUser(req.body);
         res.json(result)

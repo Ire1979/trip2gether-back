@@ -21,7 +21,6 @@ router.post('/', upload.single('img_trip'), async (req, res) => {
     const newImgPath = req.file.path + extension;
     // Movemos la imagen para que reciba la extensión.
     fs.renameSync(req.file.path, newImgPath);
-
     //Modificamos el BODY para incluir en nombre de la img en la BBDD.
     req.body.img_trip = newImgName;
 
