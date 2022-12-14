@@ -62,7 +62,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZXhwX2F0IjoxNjcyNjU4ODE1LCJpYXQiOjE2NzA5MzA4MTV9.ABHt2tlBORMrdKobGlTGeqUOCfqrGZirEUINdPIDKbI
 
 {
-    "message": "lo que sea",
+    "message": "lo sea",
     "trip_id": 5,
     "user_id": 2
 }
