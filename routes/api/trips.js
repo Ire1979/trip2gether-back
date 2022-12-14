@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', upload.single('img_trip'), async (req, res) => {
+
     // Antes de guardar el trip en la base de datos, modificamos la imagen para situarla donde nos interesa.
     const extension = '.' + req.file.mimetype.split('/')[1];
     // Obtenemos el nombre de la nueva imagen.

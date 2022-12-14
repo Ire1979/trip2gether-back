@@ -5,7 +5,7 @@ const getAllUsers = () => {
 const createUser = ({
     name, surname, username, email, password, phone, hobbies, personality, birth_date, rating, img_user }) => {
     return db.query(
-        'INSERT INTO users (name, surname, username, email, password, phone, hobbies, personality, birth_date) VALUES (?,?,?,?,?,?,?,?,?, ?)',
+        'INSERT INTO users (name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user) VALUES (?,?,?,?,?,?,?,?,?,?)',
         [name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user]);
 }
 
