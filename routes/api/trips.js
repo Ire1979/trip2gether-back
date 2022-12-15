@@ -18,7 +18,8 @@ router.get('/', async (req, res) => {
 router.get('/destination', async (req, res) => {
     try {
         const [destination] = await getAllDestinations(req.params.destination);
-        res.json(destination);
+        const destinations = destination.map(destination => destination.name)
+        res.json(destinations);
     } catch (error) {
         res.json({ fatal: error.message });
     }
@@ -80,8 +81,6 @@ router.get('/:tripId', async (req, res) => {
     res.json(trip[0]);
 });
 
-
-
 //GET TRIPS BY DESTINATION
 router.get('/destination/:location', async (req, res) => {
     try {
@@ -121,6 +120,17 @@ router.get('/user/:userId', async (req, res) => {
         res.json({ fatal: error.message });
     }
 });
+
+// //FILTER BY DESTINATION
+// router.get('/destination/filter/:destination', async (req, res) => {
+//     try {
+//         const [destination] = await filterByDestination(req.params.destination);
+//         const destinations = destination.filter(destination => destination.name)
+//         res.json(destinations);
+//     } catch (error) {
+//         res.json({ fatal: error.message });
+//     }
+// });
 
 
 //POST COMMENT

@@ -1,7 +1,7 @@
 const { strToBool } = require("../helpers/utils");
 
 const getAll = () => {
-    return db.query('SELECT * FROM trips');
+    return db.query('SELECT * FROM trip2gether.trips ORDER BY departure_date ASC');
 }
 
 const create = ({
@@ -30,7 +30,7 @@ const getTripsByDestination = (destination) => {
 }
 
 const getAllDestinations = (destination) => {
-    return db.query('SELECT destination FROM trips', [destination]);
+    return db.query('SELECT destination AS name FROM trips', [destination]);
 }
 
 const getTripsSuscribedByUser = (userId) => {
