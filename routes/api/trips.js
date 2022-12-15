@@ -89,7 +89,6 @@ router.get('/user/:userId', async (req, res) => {
 });
 
 //POST COMMENT
-
 router.post('/comment/new', checkToken, async (req, res) => {
 
     try {

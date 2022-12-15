@@ -21,7 +21,7 @@ const deleteById = (tripId) => {
 
 const getTripById = (tripId) => {
     return db.query(`SELECT * FROM trips t
-    JOIN users u ON t.user_id = u.id
+    LEFT JOIN users u ON t.user_id = u.id
     where t.id = ?`, [tripId]);
 }
 
