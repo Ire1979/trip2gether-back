@@ -103,9 +103,15 @@ router.post('/comment/new', checkToken, async (req, res) => {
 
 //GET COMMENTS BY TRIPS
 router.get('/comment/:tripId', async (req, res) => {
-    const { tripId } = req.params
-    const response = await getCommentsByTrips(tripId)
-    res.json(response)
+    try {
+        const { tripId } = req.params
+
+        const [response] = await getCommentsByTrips(tripId)
+        res.json(response)
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 module.exports = router;
