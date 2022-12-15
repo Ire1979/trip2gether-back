@@ -45,17 +45,30 @@ DELETE http://localhost:3000/api/trips/8
 /////////PETICIONES AVANZADAS/////////
 
 //GET TRIP BY ID
-GET http://localhost:3000/api/trips/4
+GET http://localhost:3000/api/trips/25
 ###
 
 //GET TRIPS BY DESTINATION
-GET http://localhost:3000/api/trips/destination/chicago
+GET http://localhost:3000/api/trips/destination/creta
+###
+
+//GET ALL DESTINATIONS
+GET http://localhost:3000/api/trips/destination
 ###
 
 //GET TRIPS BY USER
 GET http://localhost:3000/api/trips/user/6
 ###
 
+//GET TRIPS CREATED BY USER LOGGED
+GET http://localhost:3000/api/trips/user/created
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODMyNzI3LCJpYXQiOjE2NzExMDQ3Mjd9.x8Y27M0nsFthq4aqz3P2AhSIaL-GInTSTIYYQ0kABk0
+###
+
+//GET TRIPS SUSCRIBED BY USER LOGGED
+GET http://localhost:3000/api/trips/user/suscribed
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODMyNzI3LCJpYXQiOjE2NzExMDQ3Mjd9.x8Y27M0nsFthq4aqz3P2AhSIaL-GInTSTIYYQ0kABk0
+###
 
 //POST COMMENT
 POST http://localhost:3000/api/trips/comment/new

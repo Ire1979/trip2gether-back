@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser, createComment, getCommentsByTrips } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -8,11 +8,23 @@ const { checkToken } = require('../../helpers/middlewares');
 
 /////////PETICIONES BÁSICAS/////////
 
+//GET ALL TRIPS
 router.get('/', async (req, res) => {
     const [trip] = await getAll();
     res.json(trip);
 });
 
+//GET ALL DESTINATIONS
+router.get('/destination', async (req, res) => {
+    try {
+        const [destination] = await getAllDestinations(req.params.destination);
+        res.json(destination);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+//POST TRIP
 router.post('/', checkToken, upload.single('img_trip'), async (req, res) => {
 
     // Antes de guardar el trip en la base de datos, modificamos la imagen para situarla donde nos interesa.
@@ -68,6 +80,8 @@ router.get('/:tripId', async (req, res) => {
     res.json(trip[0]);
 });
 
+
+
 //GET TRIPS BY DESTINATION
 router.get('/destination/:location', async (req, res) => {
     try {
@@ -78,33 +92,54 @@ router.get('/destination/:location', async (req, res) => {
     }
 });
 
-//GET TRIPS BY USER
-router.get('/user/:userId', async (req, res) => {
+//GET TRIPS CREATED BY USER LOGGED
+router.get('/user/created', checkToken, async (req, res) => {
     try {
-        const [trips] = await getTripsByUser(req.params.userId);
+        const [trips] = await getTripsCreatedByUser(req.user.id);
         res.json(trips);
     } catch (error) {
         res.json({ fatal: error.message });
     }
 });
 
+//GET TRIPS SUSCRIBED BY USER LOGGED
+router.get('/user/suscribed', checkToken, async (req, res) => {
+    try {
+        const [trips] = await getTripsSuscribedByUser(req.user.id);
+        res.json(trips);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+//GET TRIPS BY USER
+router.get('/user/:userId', async (req, res) => {
+    try {
+        const [trips] = await getTripsCreatedByUser(req.params.userId);
+        res.json(trips);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+
 //POST COMMENT
 router.post('/comment/new', checkToken, async (req, res) => {
 
     try {
-        const response = await createComment(req.body.message, req.body.trip_id, req.user.id);
+        const [response] = await createComment(req.body.message, req.body.trip_id, req.user.id);
         res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
     }
 
-})
+});
 
 //GET COMMENTS BY TRIPS
 router.get('/comment/:tripId', async (req, res) => {
     const { tripId } = req.params
-    const response = await getCommentsByTrips(tripId)
+    const [response] = await getCommentsByTrips(tripId)
     res.json(response)
-})
+});
 
 module.exports = router;

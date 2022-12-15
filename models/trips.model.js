@@ -29,8 +29,16 @@ const getTripsByDestination = (destination) => {
     return db.query('SELECT * FROM trips WHERE destination = ?', [destination]);
 }
 
-const getTripsByUser = (userId) => {
+const getAllDestinations = (destination) => {
+    return db.query('SELECT destination FROM trips', [destination]);
+}
+
+const getTripsSuscribedByUser = (userId) => {
     return db.query('SELECT t.* FROM users_has_trips ut JOIN trips t ON t.id = ut.trips_id WHERE ut.users_id = ?', [userId]);
+}
+
+const getTripsCreatedByUser = (userId) => {
+    return db.query('SELECT * FROM trips WHERE user_id = ?', [userId]);
 }
 
 const createComment = (
@@ -40,8 +48,7 @@ const createComment = (
         'INSERT INTO comments (message, trip_id, user_id) VALUES (?,?,?)', [message, trip_id, user_id])
 }
 
-
 const getCommentsByTrips = (tripId) => {
     return db.query('SELECT * FROM trip2gether.comments WHERE trip_id = ?', [tripId])
 }
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser, createComment, getCommentsByTrips }
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser }
