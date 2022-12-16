@@ -84,3 +84,7 @@ Content-Type: application/json
 GET http://localhost:3000/api/users/trip/5
 
 
+// Recupera el perfil del usuario logado
+GET http://localhost:3000/api/users/profile
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODQ5MjYzLCJpYXQiOjE2NzExMjEyNjN9.uSNVibyROpFxMWeyxmV9Iex0RELBRF2fnCYcGlqIYpc
+

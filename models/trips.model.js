@@ -42,6 +42,6 @@ const createComment = (
 
 
 const getCommentsByTrips = (tripId) => {
-    return db.query('SELECT * FROM comments WHERE trip_id = ?', [tripId])
+    return db.query('SELECT * FROM comments c join users u on c.user_id = u.id WHERE trip_id = ?', [tripId])
 }
 module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsByUser, createComment, getCommentsByTrips }

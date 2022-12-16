@@ -114,4 +114,7 @@ router.get('/trip/:tripId', async (req, res) => {
 
 
 
+
+
+
 module.exports = router;
