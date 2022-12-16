@@ -91,7 +91,7 @@ Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTA2NjY5LCJpYXQiOjE2NzExNzg2Njl9.-TCWNVtCoDaVCw8UASP3xW-QtQT5qscKeck8ldvJPxA
 
 {
-    "name": "Leiiiiire", 
+    "name": "Leire", 
     "surname": "G", 
     "username": "leire2",
     "email": "leire87@gmail.com",  
@@ -99,7 +99,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
     "hobbies": "me gusta la pesca y el tiro con arco", 
     "personality": "tengo personalidad",
     "birth_date": "1990/03/02",
-    "img_users": ""
+    "img_user": "mifoto"
 }
 
 ###
