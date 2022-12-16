@@ -9,8 +9,8 @@ const createUser = ({
         [name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user]);
 }
 
-const editByUserId = (userId, { name, surname, username, email, password, phone, hobbies, personality, birth_date, rating }) => {
-    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, email = ?, password = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ?, rating = ? WHERE id = ?', [name, surname, username, email, password, phone, hobbies, personality, birth_date, rating, userId]);
+const editByUserId = (userId, { name, surname, username, phone, hobbies, personality, birth_date }) => {
+    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ? WHERE id = ?', [name, surname, username, phone, hobbies, personality, birth_date, userId]);
 }
 
 const deleteByUserId = (userId) => {

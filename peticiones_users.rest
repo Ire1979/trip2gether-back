@@ -84,3 +84,26 @@ Content-Type: application/json
 GET http://localhost:3000/api/users/trip/5
 
 
+###
+// EDITAR MY PROFILE
+PUT http://localhost:3000/api/users/profile
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTA2NjY5LCJpYXQiOjE2NzExNzg2Njl9.-TCWNVtCoDaVCw8UASP3xW-QtQT5qscKeck8ldvJPxA
+
+{
+    "name": "Leiiiiire", 
+    "surname": "G", 
+    "username": "leire2",
+    "email": "leire87@gmail.com",  
+    "phone": "66777777", 
+    "hobbies": "me gusta la pesca y el tiro con arco", 
+    "personality": "tengo personalidad",
+    "birth_date": "1990/03/02",
+    "img_users": ""
+}
+
+###
+
+// Recupera el perfil del usuario logado
+GET http://localhost:3000/api/users/profile
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODQ5MjYzLCJpYXQiOjE2NzExMjEyNjN9.uSNVibyROpFxMWeyxmV9Iex0RELBRF2fnCYcGlqIYpc
