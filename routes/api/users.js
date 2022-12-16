@@ -1,8 +1,7 @@
 const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip } = require('../../models/users.model');
 const { createToken } = require('../../helpers/utils');
-
 const bcrypt = require('bcryptjs');
-
+const { checkToken } = require('../../helpers/middlewares');
 const router = require('express').Router();
 
 /////////PETICIONES BÁSICAS/////////
@@ -12,6 +11,12 @@ router.get('/', async (req, res) => {
     res.json(user);
 });
 
+
+router.get('/profile', checkToken, (req, res) => {
+    res.json(req.user)
+})
+
+
 router.post('/', async (req, res) => {
     try {
         const [result] = await createUser(req.body);
@@ -20,6 +25,23 @@ router.post('/', async (req, res) => {
         res.json({ fatal: error.message })
     }
 });
+
+
+
+
+
+
+router.put('/profile', checkToken, async (req, res) => {
+
+    try {
+        const [result] = await editByUserId(req.user.id, req.body);
+        res.json(result)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
+
+
 
 router.put('/:userId', async (req, res) => {
     const { userId } = req.params;

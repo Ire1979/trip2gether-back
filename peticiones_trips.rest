@@ -44,7 +44,7 @@ DELETE http://localhost:3000/api/trips/8
 /////////PETICIONES AVANZADAS/////////
 
 //GET TRIP BY ID
-GET http://localhost:3000/api/trips/4
+GET http://localhost:3000/api/trips/25
 ###
 
 //GET TRIPS BY DESTINATION
