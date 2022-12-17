@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -51,6 +51,16 @@ router.post('/', checkToken, upload.single('img_trip'), async (req, res) => {
         res.json({ fatal: error.message });
     }
 });
+
+//POST ITINERARY ON TRIPS
+router.post('/itinerary', async (req, res) => {
+    try {
+        const [response] = await createItinerary(req.body.it_description, req.body.it_date_begin, req.body.it_date_end, req.body.trip_id);
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
 
 router.put('/:tripId', async (req, res) => {
     const { tripId } = req.params;
@@ -153,9 +163,10 @@ router.get('/comment/:tripId', async (req, res) => {
         const [response] = await getCommentsByTrips(tripId)
         res.json(response)
     } catch (error) {
-        console.log(error)
+        res.json({ fatal: error.message })
     }
 });
+
 
 
 

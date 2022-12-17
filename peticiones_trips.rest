@@ -84,6 +84,19 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZXhwX2F0
 ###
 
 //GET COMMENTS BY TRIPS
-
 GET http://localhost:3000/api/trips/comment/27
+###
 
+//POST ITINERARY ON TRIPS
+POST http://localhost:3000/api/trips/itinerary/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTE5MDg1LCJpYXQiOjE2NzExOTEwODV9.fbVs_mjOSVzYMF64sEr_WHdlffAowKDA8Up_L2tpLAc
+
+{
+    "it_description": "Paseo por Hyde Park",
+    "it_date_begin": "2022-12-17",
+    "it_date_end": "2022-12-19",
+    "trip_id": 29
+}
+
+###
