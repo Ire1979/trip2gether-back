@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/api/users/4
+PUT http://localhost:3000/api/users/20
 Content-Type: application/json
 
 {
@@ -87,23 +87,23 @@ GET http://localhost:3000/api/users/trip/5
 ###
 // EDITAR MY PROFILE
 PUT http://localhost:3000/api/users/profile
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMCwiZXhwX2F0IjoxNjcyOTQ3MDM2LCJpYXQiOjE2NzEyMTkwMzZ9.YhB8Vd_R5KcevPTHtOxCD_TEaGYP41WREr4-FjkrFAU
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTA2NjY5LCJpYXQiOjE2NzExNzg2Njl9.-TCWNVtCoDaVCw8UASP3xW-QtQT5qscKeck8ldvJPxA
 
 {
-    "name": "Leire", 
-    "surname": "G", 
-    "username": "leire2",
-    "email": "leire87@gmail.com",  
-    "phone": "66777777", 
+    "name": "Miren", 
+    "surname": "Nada", 
+    "username": "miri",
+    "email": "pepito@gmail.com",  
+    "phone": "000000000", 
     "hobbies": "me gusta la pesca y el tiro con arco", 
     "personality": "tengo personalidad",
     "birth_date": "1990/03/02",
-    "img_user": "mifoto"
+    "img_user": "no hay foto por hoy"
 }
 
 ###
 
 // Recupera el perfil del usuario logado
 GET http://localhost:3000/api/users/profile
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODQ5MjYzLCJpYXQiOjE2NzExMjEyNjN9.uSNVibyROpFxMWeyxmV9Iex0RELBRF2fnCYcGlqIYpc
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMCwiZXhwX2F0IjoxNjcyOTQ3MDM2LCJpYXQiOjE2NzEyMTkwMzZ9.YhB8Vd_R5KcevPTHtOxCD_TEaGYP41WREr4-FjkrFAU
