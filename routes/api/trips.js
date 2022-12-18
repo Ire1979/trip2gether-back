@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -131,16 +131,7 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
-// //FILTER BY DESTINATION
-// router.get('/destination/filter/:destination', async (req, res) => {
-//     try {
-//         const [destination] = await filterByDestination(req.params.destination);
-//         const destinations = destination.filter(destination => destination.name)
-//         res.json(destinations);
-//     } catch (error) {
-//         res.json({ fatal: error.message });
-//     }
-// });
+
 
 
 //POST COMMENT
@@ -167,8 +158,17 @@ router.get('/comment/:tripId', async (req, res) => {
     }
 });
 
+router.post('/request', checkToken, async (req, res) => {
+    try {
+        const { users_id, trips_id, user_status } = req.body
+        const [response] = await createRequest(req.body)
+        console.log(response)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
 
 
-
+})
 
 module.exports = router;
