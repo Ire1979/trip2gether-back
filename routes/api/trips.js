@@ -137,7 +137,7 @@ router.post('/comment/new', checkToken, async (req, res) => {
 //POST REQUEST TO A TRIP
 router.post('/request', checkToken, async (req, res) => {
     try {
-        const [response] = await createRequest(req.body.users_id, req.body.trips_id, req.body.user_status)
+        const [response] = await createRequest(req.user.id, req.body.trips_id, req.body.user_status)
         res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
