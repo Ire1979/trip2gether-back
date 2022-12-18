@@ -91,15 +91,15 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyMCwiZXhwX2F0I
 Content-Type: application/json
 
 {
-    "name": "Miren", 
-    "surname": "Nada", 
-    "username": "miri",
+    "name": "Pepe", 
+    "surname": "Pepe", 
+    "username": "Pepe",
     "email": "pepito@gmail.com",  
     "phone": "000000000", 
     "hobbies": "me gusta la pesca y el tiro con arco", 
     "personality": "tengo personalidad",
     "birth_date": "1990/03/02",
-    "img_user": "no hay foto por hoy"
+    "img_user": "nofoto"
 }
 
 ###

@@ -9,12 +9,8 @@ const createUser = ({
         [name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user]);
 }
 
-const editByUserId = (userId, { name, surname, username, phone, hobbies, personality, birth_date }) => {
-    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ? WHERE id = ?', [name, surname, username, phone, hobbies, personality, birth_date, userId]);
-}
-
-const editPhoto = (userId, { img_user }) => {
-    return db.query('UPDATE Users set img_user = ? where id = ?', [img_user, userId])
+const editByUserId = (userId, { name, surname, username, phone, hobbies, personality, birth_date, img_user }) => {
+    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ?, img_user = ? WHERE id = ?', [name, surname, username, phone, hobbies, personality, birth_date, img_user, userId]);
 }
 
 const deleteByUserId = (userId) => {
@@ -33,4 +29,4 @@ const getUsersByTrip = (tripId) => {
     return db.query('SELECT u.* FROM users_has_trips ut JOIN users u ON u.id = ut.users_id WHERE ut.trips_id = ?', [tripId]);
 }
 
-module.exports = { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip, editPhoto }
+module.exports = { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip }

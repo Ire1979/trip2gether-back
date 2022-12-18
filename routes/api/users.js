@@ -1,4 +1,4 @@
-const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip, editPhoto } = require('../../models/users.model');
+const { getAllUsers, createUser, editByUserId, deleteByUserId, getUserById, getByEmail, getUsersByTrip } = require('../../models/users.model');
 const { createToken } = require('../../helpers/utils');
 const bcrypt = require('bcryptjs');
 const multer = require('multer');
@@ -39,20 +39,17 @@ router.put('/profile', checkToken, upload.single('img_user'), async (req, res) =
     console.log(req.file);
 
     const extension = '.' + req.file.mimetype.split('/')[1];
-
     const newImgName = req.file.filename + extension;
-
     const newImgPath = req.file.path + extension;
-
     fs.renameSync(req.file.path, newImgPath);
 
     req.body.img_user = newImgName;
 
     try {
-        const [result] = await editPhoto(req.user.id, req.body);
-        res.json(result)
+        const [result] = await editByUserId(req.body);
+        res.json(result);
     } catch (error) {
-        res.json({ fatal: error.message })
+        res.json({ fatal: error.message });
     }
 })
 
