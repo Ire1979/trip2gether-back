@@ -50,5 +50,15 @@ const createComment = (
 
 const getCommentsByTrips = (tripId) => {
     return db.query('SELECT * FROM trip2gether.comments WHERE trip_id = ?', [tripId])
+
+
 }
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser }
+const createRequest = (users_id, trips_id, user_status) => {
+    return db.query('INSERT INTO users_has_trips (users_id, trips_id, user_status)values (?, ?, ?)', [users_id, trips_id, user_status])
+}
+
+//const getReqest = () => {
+//return db.query('', [])
+//}
+
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createRequest }

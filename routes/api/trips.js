@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, getRequest, createRequest } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -151,5 +151,11 @@ router.get('/comment/:tripId', async (req, res) => {
     const [response] = await getCommentsByTrips(tripId)
     res.json(response)
 });
+
+router.post('/request', checkToken, async (req, res) => {
+    const { users_id, trips_id, user_status } = req.body
+    res.json(req.body)
+
+})
 
 module.exports = router;

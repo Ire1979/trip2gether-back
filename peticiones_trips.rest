@@ -6,6 +6,7 @@ GET http://localhost:3000/api/trips
 ###
 POST http://localhost:3000/api/trips
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODMyNzI3LCJpYXQiOjE2NzExMDQ3Mjd9.x8Y27M0nsFthq4aqz3P2AhSIaL-GInTSTIYYQ0kABk0
 
 {
 "destination": "Chicago",
@@ -86,4 +87,18 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxMiwiZXhwX2F0
 //GET COMMENTS BY TRIPS
 
 GET http://localhost:3000/api/trips/comment/2
+
+
+### 
+
+POST http://localhost:3000/api/trips/request/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTA2NjY5LCJpYXQiOjE2NzExNzg2Njl9.-TCWNVtCoDaVCw8UASP3xW-QtQT5qscKeck8ldvJPxA
+
+{
+    "users_id" :20,
+    "trips_id": 27,
+    "user_status":"pending "
+}
+
 
