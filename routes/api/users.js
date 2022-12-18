@@ -7,66 +7,18 @@ const fs = require('fs');
 const { checkToken } = require('../../helpers/middlewares');
 const router = require('express').Router();
 
-/////////PETICIONES BÁSICAS/////////
+//////////////////GET//////////////////
 
+//GET ALL USERS
 router.get('/', async (req, res) => {
     const [user] = await getAllUsers();
     res.json(user);
 });
 
-
+//GET USER LOGGED BY TOKEN
 router.get('/profile', checkToken, (req, res) => {
     res.json(req.user)
 })
-
-
-router.post('/', async (req, res) => {
-    try {
-        const [result] = await createUser(req.body);
-        res.json(result)
-    } catch (error) {
-        res.json({ fatal: error.message })
-    }
-});
-
-
-
-
-
-
-router.put('/profile', checkToken, async (req, res) => {
-
-    try {
-        const [result] = await editByUserId(req.user.id, req.body);
-        res.json(result)
-    } catch (error) {
-        res.json({ fatal: error.message })
-    }
-})
-
-
-
-router.put('/:userId', async (req, res) => {
-    const { userId } = req.params;
-    try {
-        const [result] = await editByUserId(userId, req.body);
-        res.json(result);
-    } catch (error) {
-        res.json({ fatal: error.message })
-    }
-});
-
-router.delete('/:userId', async (req, res) => {
-    const { userId } = req.params;
-    try {
-        const [result] = await deleteByUserId(userId);
-        res.json(result);
-    } catch (error) {
-        res.json({ fatal: error.message })
-    }
-});
-
-/////////PETICIONES AVANZADAS/////////
 
 //GET USER BY ID
 router.get('/:userId', async (req, res) => {
@@ -75,6 +27,18 @@ router.get('/:userId', async (req, res) => {
     res.json(user);
 
 })
+
+//GET USERS BY TRIP
+router.get('/trip/:tripId', async (req, res) => {
+    try {
+        const [users] = await getUsersByTrip(req.params.tripId);
+        res.json(users);
+    } catch (error) {
+        res.json({ fatal: error.message });
+    }
+});
+
+//////////////////POST//////////////////
 
 //REGISTER
 router.post('/register', upload.single('img_user'), async (req, res) => {
@@ -125,19 +89,32 @@ router.post('/login', async (req, res) => {
     });
 });
 
-//GET USERS BY TRIP
-router.get('/trip/:tripId', async (req, res) => {
+//////////////////PUT//////////////////
+
+//EDIT LOGGED USER BY ID
+router.put('/profile', checkToken, async (req, res) => {
+
     try {
-        const [users] = await getUsersByTrip(req.params.tripId);
-        res.json(users);
+        const [result] = await editByUserId(req.user.id, req.body);
+        res.json(result)
     } catch (error) {
-        res.json({ fatal: error.message });
+        res.json({ fatal: error.message })
+    }
+})
+
+
+//////////////////DELETE//////////////////
+
+//DELETE BY USER ID
+router.delete('/:userId', async (req, res) => {
+    const { userId } = req.params;
+    try {
+        const [result] = await deleteByUserId(userId);
+        res.json(result);
+    } catch (error) {
+        res.json({ fatal: error.message })
     }
 });
-
-
-
-
 
 
 module.exports = router;

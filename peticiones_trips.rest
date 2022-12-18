@@ -102,16 +102,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
 
 ###
 
-### 
-
 POST http://localhost:3000/api/trips/request/
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyOTA2NjY5LCJpYXQiOjE2NzExNzg2Njl9.-TCWNVtCoDaVCw8UASP3xW-QtQT5qscKeck8ldvJPxA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjczMDkyNTU4LCJpYXQiOjE2NzEzNjQ1NTh9.DDvKMYCA3f0hwxawiCT8GZuVBsYJMgxWMKeNxHcWvFM
 
 {
-    "users_id" :20,
-    "trips_id": 27,
-    "user_status":"pending "
+    "users_id": 18,
+    "trips_id": 25,
+    "user_status": "pending"
 }
 
 
