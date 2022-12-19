@@ -66,9 +66,12 @@ const getItineraryByTrip = (tripId) => {
 
 const getSubscribedByTrip = (tripId) => {
     return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ?', [tripId])
-    // SELECT * FROM users_has_trips WHERE trips_id = ?
+}
+
+const manageRequest = (tripId, userId, { user_status }) => {
+    return db.query('UPDATE users_has_trips SET user_status = ? WHERE users_id = ? AND trips_id = ?', [user_status, userId, tripId])
 }
 
 
 
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip }
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest }

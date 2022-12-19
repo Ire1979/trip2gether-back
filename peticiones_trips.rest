@@ -119,5 +119,16 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
     "trips_id": 25,
     "user_status": "pending"
 }
+###
+
+//MANAGE USER REQUEST
+PUT http://localhost:3000/api/trips/29/18
+Content-Type: application/json
+
+{
+    "user_status": "aceptada"
+}
+
+###
 
 
