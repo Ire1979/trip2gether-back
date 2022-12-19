@@ -65,7 +65,8 @@ const getItineraryByTrip = (tripId) => {
 }
 
 const getSubscribedByTrip = (tripId) => {
-    return db.query('SELECT * FROM users_has_trips WHERE trips_id = ?', [tripId])
+    return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ?', [tripId])
+    // SELECT * FROM users_has_trips WHERE trips_id = ?
 }
 
 
