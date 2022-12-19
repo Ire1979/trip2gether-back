@@ -3,14 +3,14 @@ const getAllUsers = () => {
 }
 
 const createUser = ({
-    name, surname, username, email, password, phone, hobbies, personality, birth_date, rating, img_user }) => {
+    name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user }) => {
     return db.query(
         'INSERT INTO users (name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user) VALUES (?,?,?,?,?,?,?,?,?,?)',
         [name, surname, username, email, password, phone, hobbies, personality, birth_date, img_user]);
 }
 
-const editByUserId = (userId, { name, surname, username, phone, hobbies, personality, birth_date }) => {
-    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ? WHERE id = ?', [name, surname, username, phone, hobbies, personality, birth_date, userId]);
+const editByUserId = (userId, { name, surname, username, phone, hobbies, personality, birth_date, img_user }) => {
+    return db.query('UPDATE users SET name = ?, surname = ?, username = ?, phone = ?, hobbies = ?, personality = ?, birth_date = ?, img_user = ? WHERE id = ?', [name, surname, username, phone, hobbies, personality, birth_date, img_user, userId]);
 }
 
 const deleteByUserId = (userId) => {

@@ -91,17 +91,26 @@ router.post('/login', async (req, res) => {
 
 //////////////////PUT//////////////////
 
-//EDIT LOGGED USER BY ID
-router.put('/profile', checkToken, async (req, res) => {
+//EDIT PROFILE LOGGED 
+router.put('/profile', checkToken, upload.single('img_user'), async (req, res) => {
+    console.log(req.body);
+    console.log(req.file);
+
+    const extension = '.' + req.file.mimetype.split('/')[1];
+    const newImgName = req.file.filename + extension;
+    const newImgPath = req.file.path + extension;
+    fs.renameSync(req.file.path, newImgPath);
+
+    req.body.img_user = newImgName;
 
     try {
-        const [result] = await editByUserId(req.user.id, req.body);
-        res.json(result)
+        const result = await editByUserId(req.user.id, req.body);
+        res.json(result);
     } catch (error) {
-        res.json({ fatal: error.message })
+        console.log(error);
+        res.json({ fatal: error.message });
     }
 })
-
 
 //////////////////DELETE//////////////////
 
