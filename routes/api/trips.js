@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -88,6 +88,17 @@ router.get('/itinerary/:tripId', async (req, res) => {
     try {
         const { tripId } = req.params;
         const [response] = await getItineraryByTrip(tripId)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
+
+//GET SUBSCRIBED BY TRIP
+router.get('/subscribed/:tripId', async (req, res) => {
+    try {
+        const { tripId } = req.params;
+        const [response] = await getSubscribedByTrip(tripId)
         res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })

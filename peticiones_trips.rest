@@ -92,6 +92,10 @@ GET http://localhost:3000/api/trips/comment/27
 GET http://localhost:3000/api/trips/itinerary/29
 ###
 
+//GET SUBSCRIBED BY TRIP
+GET http://localhost:3000/api/trips/subscribed/29
+###
+
 //POST ITINERARY ON TRIPS
 POST http://localhost:3000/api/trips/itinerary/
 Content-Type: application/json

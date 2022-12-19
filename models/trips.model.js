@@ -64,6 +64,10 @@ const getItineraryByTrip = (tripId) => {
     return db.query('SELECT * FROM itinerary WHERE trip_id = ?', [tripId])
 }
 
+const getSubscribedByTrip = (tripId) => {
+    return db.query('SELECT * FROM users_has_trips WHERE trips_id = ?', [tripId])
+}
 
 
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip }
+
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip }
