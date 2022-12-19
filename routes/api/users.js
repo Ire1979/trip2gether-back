@@ -46,9 +46,10 @@ router.put('/profile', checkToken, upload.single('img_user'), async (req, res) =
     req.body.img_user = newImgName;
 
     try {
-        const [result] = await editByUserId(req.body);
+        const result = await editByUserId(req.user.id, req.body);
         res.json(result);
     } catch (error) {
+        console.log(error);
         res.json({ fatal: error.message });
     }
 })
