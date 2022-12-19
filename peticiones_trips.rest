@@ -6,10 +6,10 @@ GET http://localhost:3000/api/trips
 ###
 POST http://localhost:3000/api/trips
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODMyNzI3LCJpYXQiOjE2NzExMDQ3Mjd9.x8Y27M0nsFthq4aqz3P2AhSIaL-GInTSTIYYQ0kABk0
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjczMTc5NDc4LCJpYXQiOjE2NzE0NTE0Nzh9.n717ik80jgGFYKlHXz-F2Dp-2Rrrkq5mi7d61ouj9Jw
 
 {
-"destination": "Chicago",
+"destination": "Madrid",
 "min_traveler": 3,
 "max_traveler": 5,
 "min_age": 25,
@@ -17,9 +17,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
 "departure_date": "2022-11-11",
 "duration": 6,
 "price": 544,
-"description": "Visita a la ciudad de Chicago y su arquitectura",
+"description": "Madrid",
 "status": "finalizado",
-"flights": true, "hotel": true, "meals": false, "excursions": true, "rent_car": false, "insurance": false
+"flights": true, "hotel": true, "meals": false, "excursions": true, "rent_car": false, "insurance": false,
+"lat": 40,
+"lng": -3
 }
 
 ###
@@ -63,7 +65,7 @@ GET http://localhost:3000/api/trips/user/6
 
 //GET TRIPS CREATED BY USER LOGGED
 GET http://localhost:3000/api/trips/user/created
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjcyODMyNzI3LCJpYXQiOjE2NzExMDQ3Mjd9.x8Y27M0nsFthq4aqz3P2AhSIaL-GInTSTIYYQ0kABk0
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjczMTc5NDc4LCJpYXQiOjE2NzE0NTE0Nzh9.n717ik80jgGFYKlHXz-F2Dp-2Rrrkq5mi7d61ouj9Jw
 ###
 
 //GET TRIPS SUSCRIBED BY USER LOGGED
@@ -102,6 +104,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
 
 ###
 
+###
 POST http://localhost:3000/api/trips/request/
 Content-Type: application/json
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0IjoxNjczMDkyNTU4LCJpYXQiOjE2NzEzNjQ1NTh9.DDvKMYCA3f0hwxawiCT8GZuVBsYJMgxWMKeNxHcWvFM
@@ -112,4 +115,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0
     "user_status": "pending"
 }
 
+###
+// GET GEOMETRY
+GET http://localhost:3000/api/trips/geometry/33
 

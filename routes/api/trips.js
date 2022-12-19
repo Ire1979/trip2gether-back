@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getGeometry } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -84,6 +84,17 @@ router.get('/comment/:tripId', async (req, res) => {
     }
 });
 
+// GET LOCATION
+router.get('/geometry/:tripId', async (req, res) => {
+    try {
+        const { tripId } = req.params
+        const [response] = await getGeometry(tripId)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
+
 //////////////////POST//////////////////
 
 //POST NEW TRIP
@@ -95,15 +106,16 @@ router.post('/', checkToken, upload.single('img_trip'), async (req, res) => {
     const newImgName = req.file.filename + extension;
     // Obtenemos la ruta donde estará, adjuntándole la extensión.
     const newImgPath = req.file.path + extension;
-    // Movemos la imagen para que reciba la extensión.
+    /// Movemos la imagen para que reciba la extensión.
     fs.renameSync(req.file.path, newImgPath);
     //Modificamos el BODY para incluir en nombre de la img en la BBDD.
     req.body.img_trip = newImgName;
 
     req.body.user_id = req.user.id;
 
-    console.log(req.file, req.body);
 
+    // console.log(req.file, req.body);
+    console.log(req.body);
     try {
         const [result] = await create(req.body);
         res.json(result)

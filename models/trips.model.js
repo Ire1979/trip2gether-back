@@ -5,10 +5,10 @@ const getAll = () => {
 }
 
 const create = ({
-    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, user_id }) => {
+    destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, lat, lng, user_id }) => {
     return db.query(
-        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
-        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance), user_id]);
+        'INSERT INTO trips (destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, flights, hotel, meals, excursions, rent_car, insurance, lat, lng, user_id) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+        [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance), lat, lng, user_id]);
 }
 
 const editById = (tripId, { destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
@@ -56,14 +56,14 @@ const getCommentsByTrips = (tripId) => {
     return db.query('SELECT * FROM comments c join users u on c.user_id = u.id WHERE trip_id = ?', [tripId])
 }
 
-
-
-
-
 const createRequest = (users_id, trips_id, user_status) => {
     return db.query('INSERT INTO users_has_trips (users_id, trips_id, user_status)values (?, ?, ?)', [users_id, trips_id, user_status])
 }
 
+const getGeometry = (tripId) => {
+    return db.query('SELECT lat, lng FROM trips WHERE id = ?', [tripId])
+}
 
 
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest }
+
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getGeometry }
