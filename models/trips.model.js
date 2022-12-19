@@ -56,14 +56,14 @@ const getCommentsByTrips = (tripId) => {
     return db.query('SELECT * FROM comments c join users u on c.user_id = u.id WHERE trip_id = ?', [tripId])
 }
 
-
-
-
-
 const createRequest = (users_id, trips_id, user_status) => {
     return db.query('INSERT INTO users_has_trips (users_id, trips_id, user_status)values (?, ?, ?)', [users_id, trips_id, user_status])
 }
 
+const getItineraryByTrip = (tripId) => {
+    return db.query('SELECT * FROM itinerary WHERE trip_id = ?', [tripId])
+}
 
 
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest }
+
+module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip }

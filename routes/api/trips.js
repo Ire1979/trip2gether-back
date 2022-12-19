@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -72,17 +72,27 @@ router.get('/user/:userId', async (req, res) => {
     }
 });
 
-//GET COMMENTS BY TRIPS
+//GET COMMENTS BY TRIP
 router.get('/comment/:tripId', async (req, res) => {
     try {
-        const { tripId } = req.params
-
+        const { tripId } = req.params;
         const [response] = await getCommentsByTrips(tripId)
         res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
     }
 });
+
+//GET ITINERARY BY TRIP
+router.get('/itinerary/:tripId', async (req, res) => {
+    try {
+        const { tripId } = req.params;
+        const [response] = await getItineraryByTrip(tripId)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
 
 //////////////////POST//////////////////
 
