@@ -181,11 +181,25 @@ router.post('/request', checkToken, async (req, res) => {
 
 //////////////////PUT//////////////////
 
-router.put('/:tripId', async (req, res) => {
+//EDIT BY ID
+router.put('/edit/:tripId', async (req, res) => {
     const { tripId } = req.params;
     try {
-        const [result] = await editById(tripId, req.body);
+        const [result] = await editById(req.body, tripId);
         res.json(result);
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+});
+
+//DELETE BY ID (Borrado Lógico)
+router.put('/delete/:tripId', async (req, res) => {
+    const { tripId } = req.params;
+    try {
+        const [result] = await deleteById(tripId);
+        console.log(result);
+        res.json(result);
+
     } catch (error) {
         res.json({ fatal: error.message })
     }
@@ -201,20 +215,6 @@ router.put('/:tripId/:userId', async (req, res) => {
         res.json({ fatal: error.message })
     }
 })
-
-//////////////////DELETE//////////////////
-
-router.delete('/:tripId', async (req, res) => {
-    const { tripId } = req.params;
-    try {
-        const [result] = await deleteById(tripId);
-        res.json(result);
-    } catch (error) {
-        res.json({ fatal: error.message })
-    }
-});
-
-
 
 
 module.exports = router;

@@ -25,11 +25,10 @@ Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxOCwiZXhwX2F0I
 }
 
 ###
-PUT http://localhost:3000/api/trips/1
+PUT http://localhost:3000/api/trips/edit/40
 Content-Type: application/json
 
 {
-"destination": "Chicago",
 "min_traveler": 4,
 "max_traveler": 6,
 "min_age": 25,
@@ -37,11 +36,20 @@ Content-Type: application/json
 "departure_date": "2022-11-11",
 "duration": 6,
 "price": 544,
-"description": "viaje a chicago"
+"description": "testedit",
+"flights": true,
+"hotel": true,
+"meals": true,
+"excursion": true,
+"rent_car": true,
+"insurance": false
+
 }
 
 ###
-DELETE http://localhost:3000/api/trips/8
+
+//DELETE BY ID
+PUT http://localhost:3000/api/trips/delete/36
 ###
 
 

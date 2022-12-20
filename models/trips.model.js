@@ -1,7 +1,7 @@
 const { strToBool } = require("../helpers/utils");
 
 const getAll = () => {
-    return db.query('SELECT * FROM trip2gether.trips ORDER BY departure_date ASC');
+    return db.query('SELECT * FROM trip2gether.trips WHERE status = "notstarted" OR status = "inprogress" ORDER BY departure_date ASC');
 }
 
 const create = ({
@@ -11,12 +11,12 @@ const create = ({
         [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, img_trip, strToBool(flights), strToBool(hotel), strToBool(meals), strToBool(excursions), strToBool(rent_car), strToBool(insurance), lat, lng, user_id]);
 }
 
-const editById = (tripId, { destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description }) => {
-    return db.query('UPDATE trips SET destination = ?, min_traveler = ?, max_traveler = ?, min_age = ?, max_age = ?, departure_date = ?, duration = ?, price = ?, description = ? WHERE id = ?', [destination, min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, tripId]);
+const editById = ({ min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, flights, hotel, meals, excursions, rent_car, insurance, tripId }) => {
+    return db.query('UPDATE trips SET min_traveler = ?, max_traveler = ?, min_age = ?, max_age = ?, departure_date = ?, duration = ?, price = ?, description = ?, flights = ?, hotel = ?, meals = ?, excursions = ?, rent_car = ?, insurance = ? WHERE id = 40;', [min_traveler, max_traveler, min_age, max_age, departure_date, duration, price, description, flights, hotel, meals, excursions, rent_car, insurance, tripId]);
 }
 
 const deleteById = (tripId) => {
-    return db.query('DELETE FROM trips WHERE id = ?', [tripId]);
+    return db.query('UPDATE trips SET status = "deleted" WHERE id = ?;', [tripId]);
 }
 
 const getTripById = (tripId) => {
@@ -65,7 +65,7 @@ const getItineraryByTrip = (tripId) => {
 }
 
 const getSubscribedByTrip = (tripId) => {
-    return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ?', [tripId])
+    return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ? AND user_status = "pendiente" OR user_status = "aceptada"', [tripId])
 }
 
 const manageRequest = (tripId, userId, { user_status }) => {
@@ -75,7 +75,6 @@ const manageRequest = (tripId, userId, { user_status }) => {
 const getGeometry = (tripId) => {
     return db.query('SELECT lat, lng FROM trips WHERE id = ?', [tripId])
 }
-
 
 
 module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry }
