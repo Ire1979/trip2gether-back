@@ -146,3 +146,8 @@ Content-Type: application/json
 // GET GEOMETRY
 GET http://localhost:3000/api/trips/geometry/33
 
+###
+
+GET http://localhost:3000/api/trips/suscribed/accepted/24
+
+
