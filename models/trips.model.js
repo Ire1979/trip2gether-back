@@ -80,10 +80,4 @@ const getUsersAccepted = (tripId,) => {
     return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ? AND user_status = "aceptada"', tripId)
 }
 
-<<<<<<< HEAD
-module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry }
-=======
-
-
 module.exports = { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getAllDestinations, getTripsSuscribedByUser, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry, getUsersAccepted }
->>>>>>> feature_detail
