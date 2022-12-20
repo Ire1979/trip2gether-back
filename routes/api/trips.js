@@ -99,6 +99,7 @@ router.get('/subscribed/:tripId', async (req, res) => {
     try {
         const { tripId } = req.params;
         const [response] = await getSubscribedByTrip(tripId)
+        res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
     }
