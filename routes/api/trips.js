@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry, getUsersAccepted } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -99,6 +99,7 @@ router.get('/subscribed/:tripId', async (req, res) => {
     try {
         const { tripId } = req.params;
         const [response] = await getSubscribedByTrip(tripId)
+        res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
     }
@@ -115,6 +116,20 @@ router.get('/geometry/:tripId', async (req, res) => {
         res.json({ fatal: error.message })
     }
 })
+
+//GET USERS ACEPTED
+router.get('/suscribed/accepted/:tripId', async (req, res) => {
+    try {
+        const { tripId } = req.params;
+        const [response] = await getUsersAccepted(tripId)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
+
+
+
 
 //////////////////POST//////////////////
 
