@@ -48,8 +48,10 @@ const createComment = (
         'INSERT INTO comments (message, trip_id, user_id) VALUES (?,?,?)', [message, trip_id, user_id])
 }
 
-const createItinerary = (it_description, it_date_begin, it_date_end, trip_id) => {
-    return db.query('INSERT INTO itinerary (it_description, it_date_begin, it_date_end, trip_id) VALUES (?, ?, ?, ?)', [it_description, it_date_begin, it_date_end, trip_id])
+const createItinerary = (it_description, it_date_begin, it_date_end, it_lat, it_lng, it_place, trip_id) => {
+    console.log(it_place);
+
+    return db.query('INSERT INTO itinerary (it_description, it_date_begin, it_date_end, it_lat, it_lng, it_place, trip_id) VALUES (?, ?, ?, ?, ?, ?, ?)', [it_description, it_date_begin, it_date_end, it_lat, it_lng, it_place, trip_id])
 }
 
 const getCommentsByTrips = (tripId) => {
