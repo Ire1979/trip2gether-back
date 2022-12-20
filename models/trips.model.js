@@ -16,7 +16,7 @@ const editById = ({ min_traveler, max_traveler, min_age, max_age, departure_date
 }
 
 const deleteById = (tripId) => {
-    return db.query('UPDATE trips SET status = "deleted" WHERE id = ?;', [tripId]);
+    return db.query('UPDATE trips SET status = "deleted" WHERE id = ?', [tripId]);
 }
 
 const getTripById = (tripId) => {
@@ -67,7 +67,7 @@ const getItineraryByTrip = (tripId) => {
 }
 
 const getSubscribedByTrip = (tripId) => {
-    return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ? AND user_status = "pendiente" OR user_status = "aceptada"', [tripId])
+    return db.query('SELECT * FROM users_has_trips uht JOIN users u ON uht.users_id = u.id WHERE trips_id = ? AND (user_status = "pendiente" OR user_status = "aceptada")', [tripId])
 }
 
 const manageRequest = (tripId, userId, { user_status }) => {

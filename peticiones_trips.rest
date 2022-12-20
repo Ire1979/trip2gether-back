@@ -49,7 +49,7 @@ Content-Type: application/json
 ###
 
 //DELETE BY ID
-PUT http://localhost:3000/api/trips/delete/36
+PUT http://localhost:3000/api/trips/delete/37
 ###
 
 
@@ -103,7 +103,7 @@ GET http://localhost:3000/api/trips/itinerary/29
 ###
 
 //GET SUBSCRIBED BY TRIP
-GET http://localhost:3000/api/trips/subscribed/29
+GET http://localhost:3000/api/trips/subscribed/41
 ###
 
 //POST ITINERARY ON TRIPS
