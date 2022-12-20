@@ -164,7 +164,7 @@ router.post('/', checkToken, upload.single('img_trip'), async (req, res) => {
 //POST ITINERARY ON TRIPS
 router.post('/itinerary', async (req, res) => {
     try {
-        const [response] = await createItinerary(req.body.it_description, req.body.it_date_begin, req.body.it_date_end, req.body.trip_id);
+        const [response] = await createItinerary(req.body.it_description, req.body.it_date_begin, req.body.it_date_end, req.body.it_lat, req.body.it_lng, req.body.it_place, req.body.trip_id);
         res.json(response)
     } catch (error) {
         res.json({ fatal: error.message })
