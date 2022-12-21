@@ -24,7 +24,7 @@ router.get('/profile', checkToken, (req, res) => {
 router.get('/:userId', async (req, res) => {
     const { userId } = req.params;
     const [user] = await getUserById(userId);
-    res.json(user);
+    res.json(user[0]);
 
 })
 

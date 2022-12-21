@@ -1,4 +1,4 @@
-const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry, getUsersAccepted } = require('../../models/trips.model');
+const { getAll, create, editById, deleteById, getTripById, getTripsByDestination, getTripsCreatedByUser, createComment, getCommentsByTrips, getTripsSuscribedByUser, getAllDestinations, createItinerary, createRequest, getItineraryByTrip, getSubscribedByTrip, manageRequest, getGeometry, getUsersAccepted, getOnlyPendingByTrip } = require('../../models/trips.model');
 
 const router = require('express').Router();
 const multer = require('multer');
@@ -105,6 +105,16 @@ router.get('/subscribed/:tripId', async (req, res) => {
     }
 })
 
+//GET ONLY PENDING BY TRIP
+router.get('/pending/:tripId', async (req, res) => {
+    try {
+        const { tripId } = req.params;
+        const [response] = await getOnlyPendingByTrip(tripId)
+        res.json(response)
+    } catch (error) {
+        res.json({ fatal: error.message })
+    }
+})
 
 // GET GEOMETRY
 router.get('/geometry/:tripId', async (req, res) => {
