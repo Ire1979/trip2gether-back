@@ -96,12 +96,12 @@ router.put('/profile', checkToken, upload.single('img_user'), async (req, res) =
     console.log(req.body);
     console.log(req.file);
 
-    const extension = '.' + req.file.mimetype.split('/')[1];
-    const newImgName = req.file.filename + extension;
-    const newImgPath = req.file.path + extension;
-    fs.renameSync(req.file.path, newImgPath);
+    // const extension = '.' + req.file.mimetype.split('/')[1];
+    // const newImgName = req.file.filename + extension;
+    // const newImgPath = req.file.path + extension;
+    // fs.renameSync(req.file.path, newImgPath);
 
-    req.body.img_user = newImgName;
+    // req.body.img_user = newImgName;
 
     try {
         const result = await editByUserId(req.user.id, req.body);
